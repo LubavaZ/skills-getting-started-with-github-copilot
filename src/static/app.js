@@ -4,13 +4,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signup-form");
   const messageDiv = document.getElementById("message");
 
+  let messageTimeoutId;
+
   function showMessage(text, type) {
     messageDiv.textContent = text;
     messageDiv.className = type;
     messageDiv.classList.remove("hidden");
 
-    // Hide message after 5 seconds
-    setTimeout(() => {
+    if (messageTimeoutId) {
+      clearTimeout(messageTimeoutId);
+    }
+
+    // Hide message after 5 seconds (from the latest message shown)
+    messageTimeoutId = window.setTimeout(() => {
       messageDiv.classList.add("hidden");
     }, 5000);
   }
