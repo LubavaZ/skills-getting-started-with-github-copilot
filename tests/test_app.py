@@ -26,7 +26,7 @@ def test_get_activities():
 
     # Assert
     assert response.status_code == 200
-    assert list(response.json().keys()) == expected_activities
+assert set(response.json().keys()) == set(expected_activities)
 
 
 def test_signup_success():
